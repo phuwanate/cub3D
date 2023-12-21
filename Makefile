@@ -1,13 +1,38 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: plertsir <plertsir@student.42bangkok.co    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/12/15 18:01:45 by plertsir          #+#    #+#              #
+#    Updated: 2023/12/15 18:11:27 by plertsir         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = cub3D
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+FLAGS = -Wall -Wextra -Werror 
+# -fsanitize=address -g
 LIBRARIES = -Lmlx -lmlx -lm -lft -L$(LIBFT_DIR) -L$(MINILIBX_DIR) -framework OpenGL -framework AppKit
 INCLUDES = -I$(MINILIBX_DIR) -I$(LIBFT_DIR) -I$(INCLUDES_DIR)
 
-SRCS = main.c
+SRCS = 	srcs/main.c\
+		srcs/data_define_1.c\
+		srcs/data_define_2.c\
+		srcs/data_define_3.c\
+		srcs/data_get_1.c\
+		srcs/data_get_2.c\
+		srcs/movement_1.c\
+		srcs/movement_2_key.c\
+		srcs/raycast_1.c\
+		srcs/raycast_2.c\
+		srcs/raycast_3.c\
+		srcs/utils.c
+
 OBJS = $(SRCS:.c=.o)
 
-INCLUDES_DIR = ./includes/
-INCLUDES_FILE = cub3d.h
+INCLUDES_DIR = ./include/
+INCLUDES_FILE = cub_main.h cub_struct.h
 
 LIBFT = $(LIBFT_DIR)libft.a
 LIBFT_DIR = ./libft/
@@ -23,6 +48,7 @@ $(NAME): $(MINILIBX) $(LIBFT) $(OBJS)
 
 $(LIBFT):
 	$(MAKE) -sC $(LIBFT_DIR)
+
 
 $(MINILIBX):
 	$(MAKE) -sC $(MINILIBX_DIR)
